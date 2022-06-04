@@ -1,4 +1,19 @@
+<h1>Listando Técnicos</h1>
 <div class="container mat-elevation-z8">
+  <button class="mat-elevation-z8" mat-stroked-button color="primary">
+    Novo técnico
+  </button>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input
+    />
+  </mat-form-field>
+
   <table class="example-table" mat-table recycleRows [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id</th>
@@ -29,7 +44,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
+    [pageSizeOptions]="[2, 10, 20]"
     showFirstLastButtons
     aria-label="Select page of periodic elements"
   >
