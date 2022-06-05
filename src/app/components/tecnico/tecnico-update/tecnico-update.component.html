@@ -1,6 +1,6 @@
 <div class="container mat mat-elevation-z8">
   <form class="form">
-    <h1 class="fullWidth">Cadastrar Técnico</h1>
+    <h1 class="fullWidth">Atualizar Técnico</h1>
     <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="tecnicos" />
 
     <section class="section">
@@ -8,8 +8,8 @@
         >Admin</mat-checkbox
       >
       <mat-checkbox
-        [checked]="true"
         (click)="addPerfil(1)"
+        [checked]="true"
         class="margin"
         color="primary"
         >Cliente</mat-checkbox
@@ -76,16 +76,16 @@
     </mat-form-field>
 
     <button
-      (click)="create()"
+      (click)="update()"
       [disabled]="!validaCampos()"
       color="primary"
       class="fullWidth mat-elevation-z4"
       mat-flat-button
     >
-      Cadastrar
+      Atualizar
     </button>
     <button
-      routerLink="../"
+      routerLink="../../"
       color="primary"
       class="fullWidth mat-elevation-z4"
       mat-stroked-button
