@@ -1,6 +1,11 @@
-<h1>Listando ChAMADOS</h1>
+<h1>Listando Chamados</h1>
 <div class="container mat-elevation-z8">
-  <button class="mat-elevation-z8" mat-stroked-button color="primary">
+  <button
+    routerLink="create"
+    class="mat-elevation-z8"
+    mat-stroked-button
+    color="primary"
+  >
     Novo chamado
   </button>
 
@@ -15,17 +20,18 @@
   </mat-form-field>
 
   <mat-radio-group color="primary">
-    <mat-radio-button>ABERTO</mat-radio-button>
-    <mat-radio-button>ANDAMENTO</mat-radio-button>
-    <mat-radio-button>ENCERRADO</mat-radio-button>
+    <mat-radio-button (click)="orderByStatus(0)" value="0"
+      >ABERTO</mat-radio-button
+    >
+    <mat-radio-button (click)="orderByStatus(1)" value="1"
+      >ANDAMENTO</mat-radio-button
+    >
+    <mat-radio-button (click)="orderByStatus(2)" value="2"
+      >ENCERRADO</mat-radio-button
+    >
   </mat-radio-group>
 
-  <table
-    class="example-table"
-    mat-table
-    recycleRows
-    [dataSource]="ELEMENT_DATA"
-  >
+  <table class="example-table" mat-table recycleRows [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -53,12 +59,16 @@
 
     <ng-container matColumnDef="prioridade">
       <th mat-header-cell *matHeaderCellDef>Prioridade</th>
-      <td mat-cell *matCellDef="let element">{{ element.prioridade }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ retornaPrioridade(element.prioridade) }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ retornaStatus(element.status) }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="acoes">
